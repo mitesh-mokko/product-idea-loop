@@ -36,14 +36,16 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: "Avenir Next", "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   color: var(--heading);
+  letter-spacing: -0.015em;
 }
 
 h1 {
   font-size: 2.2rem;
-  line-height: 1.2;
+  line-height: 1.15;
   letter-spacing: -0.02em;
+  font-weight: 800;
   margin-bottom: 1rem;
 }
 
@@ -51,6 +53,14 @@ h2 {
   margin-top: 2.2rem;
   margin-bottom: 0.75rem;
   font-size: 1.35rem;
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+h3,
+h4 {
+  line-height: 1.3;
+  font-weight: 700;
 }
 
 p,
