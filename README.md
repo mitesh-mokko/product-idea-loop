@@ -122,3 +122,10 @@ Close intentionally.
 Start the next loop stronger.
 
 There is always another loop tomorrow.
+
+---
+
+## License
+
+This project is licensed under the MIT License.  
+The IDEA Loop framework is intended to evolve freely through open contribution.
