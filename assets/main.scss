@@ -117,3 +117,13 @@ blockquote {
     font-size: 1.75rem;
   }
 }
+
+/* Force heading weight on home/article content in case theme rules or extension styles win. */
+main.page-content > .wrapper h2 {
+  font-weight: 800 !important;
+}
+
+main.page-content > .wrapper h3,
+main.page-content > .wrapper h4 {
+  font-weight: 700 !important;
+}
