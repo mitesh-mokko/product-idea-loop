@@ -1,10 +1,10 @@
-# Product IDEA Loop
+---
+layout: default
+title: Manifesto
+permalink: /manifesto/
+---
 
-Website: <https://mitesh-mokko.github.io/product-idea-loop/>
-
-- Read online manifesto page: <https://mitesh-mokko.github.io/product-idea-loop/manifesto/>
-- Contribute ideas: [CONTRIBUTING.md](./CONTRIBUTING.md)
-- Publish artifacts: [artifacts/README.md](./artifacts/README.md)
+# Product IDEA Loop Manifesto
 
 ### A new way to build and ship software in the AI era.
 
@@ -123,10 +123,3 @@ Close intentionally.
 Start the next loop stronger.
 
 There is always another loop tomorrow.
-
----
-
-## License
-
-This project is licensed under the MIT License.  
-The IDEA Loop framework is intended to evolve freely through open contribution.
