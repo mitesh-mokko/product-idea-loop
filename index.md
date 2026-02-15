@@ -23,8 +23,8 @@ The IDEA Loop helps teams run focused build-and-learn loops where insight, desig
 ## Start here
 
 - Read the full manifesto: [Manifesto](./manifesto/)
-- Contribute to this method, suggest tools and templates: [CONTRIBUTING](./CONTRIBUTING.md)
-- Publish outcomes and links: [Artifacts](./artifacts/)
+- Contribute to the framework with ideas, tools, and techniques: [CONTRIBUTING](./contributing/)
+- Share framework evidence, case notes, and public links: [Artifacts](./artifacts/)
 
 ## What IDEA means
 
@@ -54,7 +54,7 @@ This repository is both:
 
 - An open source framework for running IDEA loops
 - A public website that evolves with contributions
-- A publishing base for loop artifacts, tweets, and learnings
+- A publishing base for framework evidence, case notes, and learnings
 
 ## Guardrails
 

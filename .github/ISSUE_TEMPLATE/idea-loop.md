@@ -1,31 +1,35 @@
 ---
-name: IDEA Loop Proposal
-about: Propose a new loop, improvement, or experiment
-title: "[loop] "
-labels: ["idea-loop"]
+name: IDEA Framework Proposal
+about: Propose ideas, tools, or techniques that improve the IDEA Loop framework
+title: "[framework] "
+labels: ["idea-loop", "framework"]
 assignees: []
 ---
 
-## Problem
+## Framework gap
 
-What problem are we trying to solve?
+What weakness, ambiguity, or failure mode in the IDEA framework are we addressing?
 
-## Who is impacted
+## Proposed improvement
 
-Who is this for?
+What idea, tool, or technique are you proposing?
 
-## Loop goal (72h max)
+## Why this helps
 
-What specific assumption or question will this loop test?
+How does this improve loop quality, speed, clarity, or safety?
 
-## Concrete output
+## How to apply
 
-What will exist at the end of this loop? (prototype, flow, screen, script, working slice)
+Describe practical steps for using this in a live IDEA loop.
 
-## Success signal
+## Evidence or examples
 
-How will we know this loop created value?
+Share references, examples, or field notes that support the proposal.
 
-## Next move criteria
+## Boundaries
 
-What conditions would lead to ship, iterate, pivot, or stop?
+Where should this not be used?
+
+## Adoption signal
+
+How will we know this framework improvement is working?
