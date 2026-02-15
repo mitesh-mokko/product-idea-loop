@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Product IDEA Loop
+nav_exclude: true
 ---
 
 # Product IDEA Loop
