@@ -1,5 +1,10 @@
 # Product IDEA Loop
 
+Website: <https://mitesh-mokko.github.io/product-idea-loop/>
+
+- Contribute ideas: [CONTRIBUTING.md](./CONTRIBUTING.md)
+- Publish artifacts: [artifacts/README.md](./artifacts/README.md)
+
 ### A new way to build and ship software in the AI era.
 
 Most teams do not run out of ideas.
