@@ -51,6 +51,16 @@ Insight -> Design -> Engineering -> Analysis (separate handoffs across days)
 Do this:
 Keep all four active in the same working session. A new user insight can change the design in minutes. A design constraint can change engineering scope immediately. Early instrumentation can change what you build next in the same loop.
 
+## Design through code is valid
+
+Designing directly in code is perfectly acceptable in IDEA loops.
+
+Condition: the looper/pilot must run an explicit quality pass on user experience and product feel before shipping.
+
+- Check interaction clarity and usability, not only technical correctness
+- Review visual rhythm, copy tone, and behavioral polish across key user paths
+- Apply extra care on first-run and edge-case experiences where trust is easiest to lose
+
 ## What this is
 
 - A practical working method for running `Insight + Design + Engineering + Analysis` concurrently
