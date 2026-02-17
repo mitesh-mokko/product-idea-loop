@@ -116,7 +116,44 @@ This repository is both:
 - Do not ship what you cannot explain
 - Do not measure value only by hours or ticket count
 
+## Setup paths (alternate, not combined)
+
+Choose one path per project phase. Do not run both at once.
+
+- **Path A**: Claude Code + Opus as orchestrator
+- **Path B**: Cursor + (GPT-Codex or Opus) as orchestrator
+
+Shared tool stack across both paths:
+
+- **Product tool**: coding agent + orchestrator
+- **Design tool**: Pencil.dev or Figma MCP
+- **Engineering tool**: coding agent + `git` / `gh` CLI
+- **Analysis tool**: PostHog MCP + orchestrator + custom scripts
+
+## Context management and continuity
+
+Context quality degrades before output quality visibly degrades. Treat context resets as a normal operating move. [R1][R2][R3]
+
+- **Claude Code path**: when context pressure rises, compact context before continuing in-thread
+- **Cursor path**: when chat context gets noisy, start a new agent chat and rely on project indexing/retrieval [R1][R2][R3]
+- **Both paths**: keep durable project state outside chat (`brief.md`, `decisions.md`, `open-questions.md`)
+
+Minimum handoff contract:
+
+- One shared `brief.md` with problem, scope, decisions, open questions, and success signals
+- One decision log to avoid re-litigating choices after chat resets
+- One analysis spine (`PostHog MCP + scripts`) so decisions are comparable across paths
+
 ## Core principle
 
 A loop is successful when it improves the starting conditions of the next loop.  
 There is always another loop tomorrow.
+
+## Appendix: References
+
+These links support the context-management guidance above, especially for Cursor indexing and long-range retrieval behavior.
+
+- [R1] Cursor blog (November 6, 2025): [Improving agent with semantic search](https://cursor.com/blog/semsearch)
+- [R2] Cursor changelog 1.2 (July 3, 2025): [Agent Planning, Better Context & Faster Tab](https://cursor.com/changelog/1-2)
+- [R3] Cursor docs: [Codebase Indexing](https://docs.cursor.com/context/codebase-indexing)
+- [R4] SSRN (November 7, 2025): [AI Agents, Productivity, and Higher-Order Thinking](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5713646)
