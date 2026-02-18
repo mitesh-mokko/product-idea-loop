@@ -90,6 +90,20 @@ But a working demo is the beginning, not the finish line.
 
 Loopers should use vibe coding to accelerate starts, then raise quality through insight, design, engineering, and analysis working together.
 
+## Flexing the Cross-Discipline Muscle
+
+Anxiety around unfamiliar skills is normal in AI-native building.
+
+Loop quality is highly sensitive to model choice, clarity of thought, prompting quality, taste, and critical thinking.
+
+Loop speed and outcomes are extremely variable. Sometimes months of work collapse into a single prompt. Sometimes a simple task gets stuck for hours.
+
+When progress stalls, move from panic to evidence: screenshots, decision notes, user feedback, metrics, and technical traces when needed.
+
+The looper/pilot should train outside active work sessions: practice prompting, study what is happening behind the curtain, refine taste, and keep building cross-discipline muscle.
+
+Be patient with the agent, and with yourself.
+
 ---
 
 ## What a loop is

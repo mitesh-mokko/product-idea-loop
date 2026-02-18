@@ -20,9 +20,6 @@ export function SiteShell({ children }: { children: ReactNode }) {
             <Link className="rounded px-2 py-1 hover:bg-accent" href="/contributing/">
               Contributing
             </Link>
-            <Link className="rounded px-2 py-1 hover:bg-accent" href="/artifacts/">
-              Artifacts
-            </Link>
             <a
               className="inline-flex items-center gap-1 rounded px-2 py-1 hover:bg-accent"
               href="https://github.com/mitesh-mokko/product-idea-loop"

@@ -11,7 +11,6 @@ import { Button } from '@/components/ui/button';
 const navLinks = [
   { href: '/manifesto/', label: 'Manifesto' },
   { href: '/contributing/', label: 'Contributing' },
-  { href: '/artifacts/', label: 'Artifacts' },
 ];
 
 export function MobileNav() {

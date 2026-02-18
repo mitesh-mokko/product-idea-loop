@@ -121,6 +121,21 @@ Condition: the looper/pilot must run an explicit quality pass on user experience
 - Validate the whole system: user outcomes, data realism, performance, reliability, and instrumentation
 - Apply extra care on first-run and edge-case experiences where trust is easiest to lose
 
+## Flexing the Cross-Discipline Muscle
+
+If this feels hard at first, that is normal.
+
+Each loop is highly sensitive to model choice, clarity of thought, prompting quality, taste, and critical thinking.
+
+Loop speed and outcomes are extremely variable. Sometimes months of work collapse into a single prompt. Sometimes a simple task gets stuck for hours.
+
+When progress stalls, do not rely on memory or vibes alone. Collect evidence.
+
+The looper/pilot should train outside active work sessions: practice prompting, study what is happening behind the curtain, refine taste, and keep building cross-discipline muscle.
+
+Be kind to yourself during your initial loops. This technique itself is brand new, and AI agents are improving at a blistering pace.
+
+
 ## Context management and continuity
 
 Context quality degrades before output quality visibly degrades. Treat context resets as a normal operating move. [R1][R2][R3]
