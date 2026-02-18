@@ -27,6 +27,12 @@ The IDEA Loop helps teams run focused build-and-learn loops where insight, desig
 - Contribute to the framework with ideas, tools, and techniques: [CONTRIBUTING](./contributing/)
 - Share framework evidence, case notes, and public links: [Artifacts](./artifacts/)
 
+## How this page relates to the manifesto
+
+- The [Manifesto](./manifesto/) defines principles and intent
+- This index defines the practical operating playbook (setups, workflows, and references)
+- Keep both aligned on core method claims; update both when principles change
+
 ## What IDEA means
 
 **IDEA = Insight, Design, Engineering, Analysis**
@@ -71,6 +77,7 @@ A loop is one focused round of building and learning.
 - Use a self-contained environment with isolated runtime and safe rollback/checkpoints (example: [Replit](https://replit.com/))
 - Optionally import a [Figma](https://www.figma.com/) design to bootstrap UI structure
 - Then treat design as code-first and simulate data as needed to exercise flows
+- In [Replit](https://replit.com/), use built-in theme tooling to adjust visual direction on the fly while iterating in code
 - Promote to production repos only after loop evidence supports continuation
 - Other light options for quick concept generation: [Bolt](https://bolt.new/), [v0](https://v0.app/), [Lovable](https://lovable.dev/)
 
@@ -82,7 +89,7 @@ Choose this if you prefer terminal-native workflows
 - Product: coding agent + orchestrator
 - Design: [Pencil](https://pencil.dev/), [Figma](https://www.figma.com/) + MCP, or design-through-code
 - Engineering: `git` + [`gh`](https://cli.github.com/) + coding agent
-- Analysis: [PostHog](https://posthog.com/) + orchestrator + custom scripts
+- Analysis: [PostHog](https://posthog.com/) or any preferred product analytics solution + orchestrator + custom scripts (prefer tools with MCP integrations or Claude skills)
 - When context pressure rises, compact context before continuing in-thread
 
 ### Power User Setup B - Cursor
@@ -93,7 +100,7 @@ Choose this if you prefer IDE-native workflows
 - Product: coding agent + orchestrator
 - Design: [Pencil](https://pencil.dev/), [Figma](https://www.figma.com/) + MCP, or design-through-code
 - Engineering: `git` + [`gh`](https://cli.github.com/) + coding agent
-- Analysis: [PostHog](https://posthog.com/) + orchestrator + custom scripts
+- Analysis: [PostHog](https://posthog.com/) or any preferred product analytics solution + orchestrator + custom scripts (prefer tools with MCP integrations or Claude skills)
 - When chat context gets noisy, start a new agent chat and rely on indexing/retrieval
 
 Tooling note:
@@ -105,10 +112,13 @@ Tooling note:
 
 Designing directly in code is perfectly acceptable in IDEA loops.
 
+Great software requires more than working code. Loopers should think beyond vibe coding and evaluate the whole product.
+
 Condition: the looper/pilot must run an explicit quality pass on user experience and product feel before shipping.
 
 - Check interaction clarity and usability, not only technical correctness
 - Review visual rhythm, copy tone, and behavioral polish across key user paths
+- Validate the whole system: user outcomes, data realism, performance, reliability, and instrumentation
 - Apply extra care on first-run and edge-case experiences where trust is easiest to lose
 
 ## Context management and continuity
@@ -123,7 +133,7 @@ Minimum handoff contract:
 
 - One shared `brief.md` with problem, scope, decisions, open questions, and success signals
 - One decision log to avoid re-litigating choices after chat resets
-- One analysis spine (`PostHog MCP + scripts`) so decisions are comparable across paths
+- One analysis spine (for example, `PostHog + scripts` or your preferred analytics stack), and prefer tools with MCP integrations or Claude skills so decisions remain comparable across paths
 
 ## What this is
 

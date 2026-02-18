@@ -22,6 +22,14 @@ The loop is built to maximize abundant attempts.
 
 ---
 
+## How this manifesto relates to the index
+
+- This manifesto defines principles and intent
+- The [index](./index.md) defines the practical operating playbook (setups, workflows, and references)
+- If wording drifts, preserve principle-level alignment first, then update operational guidance
+
+---
+
 ## What IDEA means
 
 **IDEA = Insight, Design, Engineering, Analysis.**
@@ -71,9 +79,16 @@ Think live studio, not relay race.
 - It counters sunk-cost fallacy by forcing explicit loop closure decisions
 - It combines the speed of low-fidelity wireframing and vibe coding into a coherent AI-powered way of working
 
-Instinct -> Insight -> Intelligence.
+## A note on vibe coding
 
-"I" evolves. I mature.
+Vibe coding deserves real credit: it helped make app creation accessible to far more people.
+
+That accessibility is a major unlock for IDEA loops.
+Product IDEA Loop is different: it treats vibe coding as ignition, then raises quality through disciplined loops and explicit evidence.
+
+But a working demo is the beginning, not the finish line.
+
+Loopers should use vibe coding to accelerate starts, then raise quality through insight, design, engineering, and analysis working together.
 
 ---
 
@@ -180,3 +195,7 @@ Start the next loop stronger.
 There is always another loop tomorrow.
 
 For current tooling patterns, setup options, and references, see the framework index: [Product IDEA Loop](./index.md).
+
+Instinct -> Insight -> Intelligence.
+
+"I" evolves. I mature.
