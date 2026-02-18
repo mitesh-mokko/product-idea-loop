@@ -7,6 +7,26 @@ Website: <https://mitesh-mokko.github.io/product-idea-loop/>
 - Contribute framework improvements (ideas, tools, techniques): [CONTRIBUTING.md](./CONTRIBUTING.md)
 - Share framework evidence and case notes: [artifacts/README.md](./artifacts/README.md)
 
+## Site stack
+
+- Framework: [Next.js](https://nextjs.org/) static export (`output: 'export'`)
+- UI: [React](https://react.dev/), [Tailwind CSS v4](https://tailwindcss.com/), shadcn-style theming tokens
+- Deploy: GitHub Pages via GitHub Actions (`.github/workflows/deploy-pages.yml`)
+- Content source: markdown files in repo root (`index.md`, `manifesto.md`, `CONTRIBUTING.md`, `artifacts/README.md`)
+
+### Local development
+
+```bash
+npm install
+npm run dev
+```
+
+### Production build
+
+```bash
+npm run build
+```
+
 ## Current operating notes
 
 The canonical operating guidance (setup paths, context management, and references) lives on the main framework page:
