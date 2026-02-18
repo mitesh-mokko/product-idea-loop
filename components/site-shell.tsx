@@ -31,7 +31,19 @@ export function SiteShell({ children }: { children: ReactNode }) {
       <footer className="border-t border-border/80 py-6 text-sm text-muted-foreground">
         <div className="mx-auto flex w-full max-w-4xl flex-col gap-1 px-4 sm:px-6">
           <p>Product IDEA Loop</p>
-          <p>Mitesh Shah · mitesh@mokko.io</p>
+          <a
+            className="inline-flex w-fit flex-col gap-2 rounded-md p-1 hover:bg-accent"
+            href="https://github.com/mitesh-mokko/product-idea-loop/graphs/contributors"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span className="text-xs uppercase tracking-wide text-muted-foreground">Contributors</span>
+            <img
+              src="https://contrib.rocks/image?repo=mitesh-mokko/product-idea-loop"
+              alt="Contributors to Product IDEA Loop"
+              className="h-8 w-auto"
+            />
+          </a>
         </div>
       </footer>
     </div>
