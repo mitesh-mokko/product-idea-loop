@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Menu, X } from 'lucide-react';
+import { Github, Menu, X } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
@@ -57,6 +57,15 @@ export function MobileNav() {
                   {item.label}
                 </Link>
               ))}
+              <a
+                className="inline-flex items-center gap-2 rounded-md px-3 py-2 hover:bg-accent"
+                href="https://github.com/mitesh-mokko/product-idea-loop"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Github className="size-4" />
+                <span>GitHub Repository</span>
+              </a>
               <ThemeToggle className="justify-start" showLabel />
             </nav>
           </div>
