@@ -178,3 +178,5 @@ Close intentionally.
 Start the next loop stronger.
 
 There is always another loop tomorrow.
+
+For current tooling patterns, setup options, and references, see the framework index: [Product IDEA Loop](./index.md).

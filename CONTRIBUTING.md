@@ -51,6 +51,7 @@ Use this in issues or PR descriptions:
 - Link a related issue (if applicable)
 - Keep scope focused on one framework improvement
 - Update docs/examples consistently
+- If method language changes, sync [index.md](./index.md), [README.md](./README.md), and [manifesto.md](./manifesto.md)
 - Include before/after wording where possible
 - Note any migration impact on existing templates
 

@@ -3,8 +3,15 @@
 Website: <https://mitesh-mokko.github.io/product-idea-loop/>
 
 - Read online manifesto page: <https://mitesh-mokko.github.io/product-idea-loop/manifesto/>
+- Read current method and operating guidance: <https://mitesh-mokko.github.io/product-idea-loop/>
 - Contribute framework improvements (ideas, tools, techniques): [CONTRIBUTING.md](./CONTRIBUTING.md)
 - Share framework evidence and case notes: [artifacts/README.md](./artifacts/README.md)
+
+## Current operating notes
+
+The canonical operating guidance (setup paths, context management, and references) lives on the main framework page:
+
+- [Product IDEA Loop index](./index.md)
 
 ### A new way to build and ship software in the AI era.
 

@@ -126,19 +126,43 @@ This repository is both:
 - Do not ship what you cannot explain
 - Do not measure value only by hours or ticket count
 
-## Setup paths (alternate, not combined)
+## Setup options
 
-Choose one path per project phase. Do not run both at once.
 
-- **Path A**: Claude Code + Opus as orchestrator
-- **Path B**: Cursor + (GPT-Codex or Opus) as orchestrator
+### Sandboxes (non-technical loopers should try these first)
 
-Shared tool stack across both paths:
+- Use a self-contained environment with isolated runtime and safe rollback/checkpoints (example: [Replit](https://replit.com/))
+- Optionally import a [Figma](https://www.figma.com/) design to bootstrap UI structure
+- Then treat design as code-first and simulate data as needed to exercise flows
+- Promote to production repos only after loop evidence supports continuation
+- Other light options for quick concept generation: [Bolt](https://bolt.new/), [v0](https://v0.app/), [Lovable](https://lovable.dev/)
 
-- **Product tool**: coding agent + orchestrator
-- **Design tool**: Pencil.dev or Figma MCP
-- **Engineering tool**: coding agent + `git` / `gh` CLI
-- **Analysis tool**: PostHog MCP + orchestrator + custom scripts
+### Power User Setup A - Claude Code
+
+Choose this if you prefer terminal-native workflows
+
+- [Claude Code](https://claude.com/product/claude-code) with Opus as orchestrator
+- Product: coding agent + orchestrator
+- Design: [Pencil](https://pencil.dev/), [Figma](https://www.figma.com/) + MCP, or design-through-code
+- Engineering: `git` + [`gh`](https://cli.github.com/) + coding agent
+- Analysis: [PostHog](https://posthog.com/) + orchestrator + custom scripts
+- When context pressure rises, compact context before continuing in-thread
+
+### Power User Setup B - Cursor
+
+Choose this if you prefer IDE-native workflows
+
+- [Cursor](https://cursor.com/) with GPT-Codex or Opus as orchestrator
+- Product: coding agent + orchestrator
+- Design: [Pencil](https://pencil.dev/), [Figma](https://www.figma.com/) + MCP, or design-through-code
+- Engineering: `git` + [`gh`](https://cli.github.com/) + coding agent
+- Analysis: [PostHog](https://posthog.com/) + orchestrator + custom scripts
+- When chat context gets noisy, start a new agent chat and rely on indexing/retrieval
+
+Tooling note:
+
+- IDEA does not require a specific vendor; choose tools by capability fit and team constraints
+- Between Setup A and Setup B, operator preference and fluency are the primary selector
 
 ## Context management and continuity
 
