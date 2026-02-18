@@ -1,11 +1,30 @@
+import Link from 'next/link';
 import type { Components } from 'react-markdown';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
 const components: Components = {
-  a: ({ ...props }) => (
-    <a className="text-primary underline underline-offset-4 hover:opacity-85" {...props} />
-  ),
+  a: ({ href, children, ...props }) => {
+    const isInternal = typeof href === 'string' && href.startsWith('/');
+    if (isInternal) {
+      return (
+        <Link className="text-primary underline underline-offset-4 hover:opacity-85" href={href}>
+          {children}
+        </Link>
+      );
+    }
+    return (
+      <a
+        className="text-primary underline underline-offset-4 hover:opacity-85"
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        {...props}
+      >
+        {children}
+      </a>
+    );
+  },
   h1: ({ ...props }) => (
     <h1 className="mt-8 text-3xl font-extrabold tracking-tight sm:text-4xl" {...props} />
   ),
