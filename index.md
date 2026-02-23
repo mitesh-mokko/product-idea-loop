@@ -57,6 +57,24 @@ Insight -> Design -> Engineering -> Analysis (separate handoffs across days)
 Do this:
 Keep all four active in the same working session. A new user insight can change the design in minutes. A design constraint can change engineering scope immediately. Early instrumentation can change what you build next in the same loop.
 
+### Where the discipline lives
+
+Sequential methods put discipline in the process: gates, handoffs, approvals, tickets. The system prevents bad decisions by making you wait. It works, but the cost is time and the risk is that the gates become theater.
+
+Cowboy coding has no discipline anywhere. Build fast, ship, hope for the best.
+
+Vibe coding has discipline in intuition only. It follows the feeling without verifying it. When it fails, there is no diagnostic.
+
+IDEA loops move discipline from process to judgment. All four functions run concurrently, but:
+
+- The loop opens with a named insight, not "let's see what happens"
+- The loop closes with explicit analysis: what shipped, what was learned, what happens next
+- Every design decision is validated in the real medium, not approved in a deck
+- Every engineering choice is evaluated against user feeling, not just technical correctness
+- The loop has a time bound, forcing a decision
+
+Concurrency does not mean unstructured. It means all feedback channels stay open so that a design insight can change engineering in minutes instead of weeks. A jazz ensemble, not a noise jam — the musicians play concurrently, but they know the key, the tempo, the form, and when to listen.
+
 ## What a loop is
 
 A loop is one focused round of building and learning.
@@ -121,6 +139,18 @@ Condition: the looper/pilot must run an explicit quality pass on user experience
 - Validate the whole system: user outcomes, data realism, performance, reliability, and instrumentation
 - Apply extra care on first-run and edge-case experiences where trust is easiest to lose
 
+### Patterns that only emerge in loops
+
+Some design patterns are structurally impossible in a traditional pipeline because the handoff process flattens them.
+
+Example: a fluid, content-driven container — a single animated surface that measures its children and resizes to fit, guiding users through a multi-step flow without page navigation. This pattern requires design and engineering to be the same conversation. In a Figma-to-ticket pipeline, it would require 10+ static artboards with transition annotations. Most teams would look at that spec and simplify to fixed-size modals. The fluid idea gets lost in translation.
+
+In a loop, the container is built, fails, gets rebuilt, and is tuned — all in one session with taste guiding every iteration. There is no handoff where the idea gets flattened into rectangles.
+
+This is not limited to animated containers. Any pattern where the design depends on runtime behavior — content-driven sizing, scroll-aware effects, preloaded transitions, animation timing tuned to emotional context — benefits from the same loop dynamic. The design cannot be fully specified in a static medium. It has to be felt in the real medium and adjusted in real time.
+
+Look for these patterns in your loops. They are a signal that the concurrent model is producing something a sequential process could not.
+
 ## Flexing the Cross-Discipline Muscle
 
 If this feels hard at first, that is normal.
@@ -162,6 +192,8 @@ Minimum handoff contract:
 - Not a replacement for functional expertise
 - Not a mandatory org process or new reporting layer
 - Not a license to skip safety, compliance, or quality review
+- Not cowboy coding — every loop closes with a written record of decisions and evidence
+- Not vibe coding — intuition informs direction, but the loop demands verification
 
 ## Guardrails
 
@@ -185,6 +217,18 @@ Additional strong signals:
 - The loop produced reusable assets (prompt, component, metric, playbook)
 - Next-loop scope became sharper (clearer problem, tighter constraints, better questions)
 - Risk moved from implicit to explicit (known unknowns became named decisions)
+
+### Evidence structure, not process structure
+
+The highest-fidelity artifact is the product itself. Everything else — tickets, decks, 100-screen Figma files — is a lossy compression of intent.
+
+IDEA loops replace process artifacts with evidence artifacts:
+
+- A shipped prototype instead of a specification
+- A demo video instead of a stakeholder alignment meeting
+- A loop capture with real timestamps and killed paths instead of a sprint retrospective
+
+The loop capture is the accountability mechanism. When it documents what was built, what was learned, and what was killed, it is more transparent than any ticket marked "Done."
 
 ## Strengths of this framework
 
