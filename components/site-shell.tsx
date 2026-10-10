@@ -10,7 +10,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
     <div className="min-h-screen bg-background text-foreground">
       <header className="sticky top-0 z-20 border-b border-border/80 bg-card/90 backdrop-blur">
         <div className="mx-auto flex w-full max-w-4xl items-center justify-between px-4 py-3 sm:px-6">
-          <Link href="/" className="max-w-[13rem] truncate font-semibold tracking-tight sm:max-w-none">
+          <Link href="/" className="max-w-[13rem] truncate text-[0.9375rem] font-medium tracking-[-0.02em] sm:max-w-none sm:text-sm">
             Product IDEA Loop
           </Link>
           <nav className="hidden items-center gap-2 text-sm md:flex">
@@ -38,7 +38,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
       <footer className="border-t border-border/80 bg-card/60 py-6 font-sans text-sm text-muted-foreground">
         <div className="mx-auto flex w-full max-w-4xl flex-col gap-4 px-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
           <div className="space-y-1">
-            <p className="text-sm font-semibold tracking-tight text-foreground">Product IDEA Loop</p>
+            <p className="text-sm font-medium tracking-[-0.02em] text-foreground">Product IDEA Loop</p>
             <p className="text-xs">Open source framework for running IDEA loops.</p>
           </div>
           <div className="space-y-2 sm:text-right">

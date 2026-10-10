@@ -26,10 +26,17 @@ const components: Components = {
     );
   },
   h1: ({ ...props }) => (
-    <h1 className="mt-8 text-3xl font-extrabold tracking-tight sm:text-4xl" {...props} />
+    <h1
+      className="mt-8 text-[1.875rem] font-semibold leading-[1.15] tracking-[-0.025em] sm:text-[2.125rem]"
+      {...props}
+    />
   ),
-  h2: ({ ...props }) => <h2 className="mt-10 text-xl font-bold tracking-tight sm:text-2xl" {...props} />,
-  h3: ({ ...props }) => <h3 className="mt-8 text-lg font-semibold tracking-tight sm:text-xl" {...props} />,
+  h2: ({ ...props }) => (
+    <h2 className="mt-10 text-xl font-medium leading-snug tracking-[-0.02em] sm:text-[1.625rem]" {...props} />
+  ),
+  h3: ({ ...props }) => (
+    <h3 className="mt-8 text-lg font-medium leading-snug tracking-[-0.015em] sm:text-xl" {...props} />
+  ),
   p: ({ ...props }) => <p className="mt-4 leading-7 text-foreground/90 sm:leading-8" {...props} />,
   ul: ({ ...props }) => <ul className="mt-4 list-disc space-y-2 pl-6" {...props} />,
   ol: ({ ...props }) => <ol className="mt-4 list-decimal space-y-2 pl-6" {...props} />,
