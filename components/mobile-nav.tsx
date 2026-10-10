@@ -46,7 +46,7 @@ export function MobileNav() {
             type="button"
           />
           <div className="absolute right-0 z-40 mt-2 w-64 rounded-lg border border-border bg-card p-2 shadow-lg">
-            <nav className="flex flex-col gap-1 text-sm">
+            <nav className="flex flex-col gap-1 font-sans text-sm font-medium tracking-tight">
               {navLinks.map((item) => (
                 <Link
                   key={item.href}
