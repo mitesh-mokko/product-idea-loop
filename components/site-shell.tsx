@@ -10,10 +10,13 @@ export function SiteShell({ children }: { children: ReactNode }) {
     <div className="min-h-screen bg-background text-foreground">
       <header className="sticky top-0 z-20 border-b border-border/80 bg-card/90 backdrop-blur">
         <div className="mx-auto flex w-full max-w-4xl items-center justify-between px-4 py-3 sm:px-6">
-          <Link href="/" className="max-w-[13rem] truncate text-[0.9375rem] font-medium tracking-[-0.02em] sm:max-w-none sm:text-sm">
+          <Link
+            href="/"
+            className="max-w-[13rem] truncate font-sans text-sm font-medium tracking-tight sm:max-w-none"
+          >
             Product IDEA Loop
           </Link>
-          <nav className="hidden items-center gap-2 text-sm md:flex">
+          <nav className="hidden items-center gap-2 font-sans text-sm font-medium tracking-tight md:flex">
             <Link className="rounded px-2 py-1 hover:bg-accent" href="/manifesto/">
               Manifesto
             </Link>
@@ -35,15 +38,15 @@ export function SiteShell({ children }: { children: ReactNode }) {
         </div>
       </header>
       <main className="mx-auto w-full max-w-4xl px-4 py-8 sm:px-6 sm:py-10">{children}</main>
-      <footer className="border-t border-border/80 bg-card/60 py-6 font-sans text-sm text-muted-foreground">
+      <footer className="border-t border-border/80 bg-card/60 py-6 font-sans text-sm font-medium tracking-tight text-muted-foreground">
         <div className="mx-auto flex w-full max-w-4xl flex-col gap-4 px-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
           <div className="space-y-1">
-            <p className="text-sm font-medium tracking-[-0.02em] text-foreground">Product IDEA Loop</p>
-            <p className="text-xs">Open source framework for running IDEA loops.</p>
+            <p className="text-sm font-medium text-foreground">Product IDEA Loop</p>
+            <p className="text-sm text-muted-foreground">Open source framework for running IDEA loops.</p>
           </div>
           <div className="space-y-2 sm:text-right">
             <a
-              className="text-xs font-medium text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+              className="text-sm font-medium text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
               href="https://github.com/mitesh-mokko/product-idea-loop/graphs/contributors"
               target="_blank"
               rel="noopener noreferrer"
