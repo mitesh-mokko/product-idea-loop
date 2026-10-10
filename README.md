@@ -27,11 +27,28 @@ npm run dev
 npm run build
 ```
 
-## Current operating notes
+## Documentation map
 
-The canonical operating guidance (setup paths, context management, and references) lives on the main framework page:
+| Source | Role |
+| --- | --- |
+| [index.md](./index.md) | **Framework playbook** (site home): setups, agent orchestration, context management, references |
+| [manifesto.md](./manifesto.md) | **Manifesto** (site `/manifesto/`): principles and intent |
+| [CONTRIBUTING.md](./CONTRIBUTING.md) | How to propose framework improvements |
+| [artifacts/README.md](./artifacts/README.md) | How to publish loop evidence that teaches the method |
 
-- [Product IDEA Loop index](./index.md)
+When method language changes, keep [index.md](./index.md), this README, and [manifesto.md](./manifesto.md) aligned per [CONTRIBUTING.md](./CONTRIBUTING.md).
+
+## Operating playbook
+
+Setup options, cloud/parallel agent patterns, context management, and appendix references live in **[index.md](./index.md)**. The site home page renders that file; avoid duplicating the full playbook here so it does not drift.
+
+---
+
+## Manifesto
+
+The text below matches [manifesto.md](./manifesto.md) (published at `/manifesto/`).
+
+# Product IDEA Loop Manifesto
 
 ### A new way to build and ship software in the AI era.
 
@@ -46,6 +63,14 @@ But now AI has changed what is possible. One person can create working software 
 The sprint was built to manage scarce builders.
 
 The loop is built to maximize abundant attempts.
+
+---
+
+## How this manifesto relates to the index
+
+- This manifesto defines principles and intent
+- The [index](./index.md) defines the practical operating playbook (setups, workflows, and references)
+- If wording drifts, preserve principle-level alignment first, then update operational guidance
 
 ---
 
@@ -98,9 +123,30 @@ Think live studio, not relay race.
 - It counters sunk-cost fallacy by forcing explicit loop closure decisions
 - It combines the speed of low-fidelity wireframing and vibe coding into a coherent AI-powered way of working
 
-Instinct -> Insight -> Intelligence.
+## A note on vibe coding
 
-"I" evolves. I mature.
+Vibe coding deserves real credit: it helped make app creation accessible to far more people.
+
+That accessibility is a major unlock for IDEA loops.
+Product IDEA Loop is different: it treats vibe coding as ignition, then raises quality through disciplined loops and explicit evidence.
+
+But a working demo is the beginning, not the finish line.
+
+Loopers should use vibe coding to accelerate starts, then raise quality through insight, design, engineering, and analysis working together.
+
+## Flexing the Cross-Discipline Muscle
+
+Anxiety around unfamiliar skills is normal in AI-native building.
+
+Loop quality is highly sensitive to model choice, clarity of thought, prompting quality, taste, and critical thinking.
+
+Loop speed and outcomes are extremely variable. Sometimes months of work collapse into a single prompt. Sometimes a simple task gets stuck for hours.
+
+When progress stalls, move from panic to evidence: screenshots, decision notes, user feedback, metrics, and technical traces when needed.
+
+The looper/pilot should train outside active work sessions: practice prompting, study what is happening behind the curtain, refine taste, and keep building cross-discipline muscle.
+
+Be patient with the agent, and with yourself.
 
 ---
 
@@ -205,6 +251,12 @@ Close intentionally.
 Start the next loop stronger.
 
 There is always another loop tomorrow.
+
+For current tooling patterns, setup options, and references, see the framework index: [Product IDEA Loop](./index.md).
+
+Instinct -> Insight -> Intelligence.
+
+"I" evolves. I mature.
 
 ---
 

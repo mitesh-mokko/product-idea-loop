@@ -99,27 +99,34 @@ A loop is one focused round of building and learning.
 - Promote to production repos only after loop evidence supports continuation
 - Other light options for quick concept generation: [Bolt](https://bolt.new/), [v0](https://v0.app/), [Lovable](https://lovable.dev/)
 
-### Power User Setup A - Claude Code
+### Power User Setup A — terminal-native agents
 
-Choose this if you prefer terminal-native workflows
+Choose this if you prefer terminal-native workflows.
 
-- [Claude Code](https://claude.com/product/claude-code) with Opus as orchestrator
-- Product: coding agent + orchestrator
-- Design: [Pencil](https://pencil.dev/), [Figma](https://www.figma.com/) + MCP, or design-through-code
-- Engineering: `git` + [`gh`](https://cli.github.com/) + coding agent
-- Analysis: [PostHog](https://posthog.com/) or any preferred product analytics solution + orchestrator + custom scripts (prefer tools with MCP integrations or Claude skills)
-- When context pressure rises, compact context before continuing in-thread
+- A terminal coding agent (for example [Claude Code](https://claude.com/product/claude-code)) with a capable reasoning model for orchestration
+- Product and engineering: coding agent + `git` + [`gh`](https://cli.github.com/)
+- Design: [Figma](https://www.figma.com/) or other design sources via MCP, or design-through-code in the repo
+- Analysis: your product analytics stack (for example [PostHog](https://posthog.com/)) plus scripts; prefer MCP-connected metrics and dashboards
+- **Longer or parallel work:** kick off background or cloud agent runs on separate branches while you keep the in-session loop focused; merge through normal PR review at loop close
+- **Context:** compact or reset when quality drops; keep durable state in repo files (see below), not only in chat
 
-### Power User Setup B - Cursor
+### Power User Setup B — IDE and cloud agents
 
-Choose this if you prefer IDE-native workflows
+Choose this if you prefer IDE-native workflows or want agents that run outside your laptop.
 
-- [Cursor](https://cursor.com/) with GPT-Codex or Opus as orchestrator
-- Product: coding agent + orchestrator
-- Design: [Pencil](https://pencil.dev/), [Figma](https://www.figma.com/) + MCP, or design-through-code
-- Engineering: `git` + [`gh`](https://cli.github.com/) + coding agent
-- Analysis: [PostHog](https://posthog.com/) or any preferred product analytics solution + orchestrator + custom scripts (prefer tools with MCP integrations or Claude skills)
-- When chat context gets noisy, start a new agent chat and rely on indexing/retrieval
+- An IDE with agent mode (for example [Cursor](https://cursor.com/)) using the coding models your team already trusts
+- Same cross-discipline stack as Setup A: `git`, [`gh`](https://cli.github.com/), design-through-code or MCP-linked design tools, analytics + scripts
+- **In-session loop:** stay in one focused agent thread for the 1–6 hour loop when the work is tightly coupled
+- **Cloud agents:** for work that outlasts a single chat, use hosted agents that clone the repo, work on a branch, run tests, and open or update PRs (see [Cursor Cloud Agents](https://cursor.com/docs/cloud-agent)); review artifacts before merge
+- **Parallel agents:** when scopes split cleanly (for example UI polish vs. API wiring), run separate agent threads or cloud runs on different branches; treat draft PRs as loop evidence, not silent shipping
+- **MCP:** connect issue trackers, design tools, analytics, and internal APIs so agents pull live context instead of pasted dumps
+- **Context:** when chat noise rises, start a fresh agent and rely on codebase search and indexing [R1][R3]
+
+### Agent orchestration (both setups)
+
+- Match agent shape to loop shape: pair programming in-session for ambiguous work; cloud or background agents for long builds, test matrices, or clearly scoped branches
+- Keep one `brief.md` authoritative so parallel runs do not fork intent
+- Prefer MCP and repo-resident docs over copying large context into every thread
 
 Tooling note:
 
@@ -168,17 +175,17 @@ Be kind to yourself during your initial loops. This technique itself is brand ne
 
 ## Context management and continuity
 
-Context quality degrades before output quality visibly degrades. Treat context resets as a normal operating move. [R1][R2][R3]
+Context quality degrades before output quality visibly degrades. Treat context resets, fresh agent threads, and parallel cloud runs as normal operating moves—not failures. [R1][R2][R3]
 
-- **Claude Code path**: when context pressure rises, compact context before continuing in-thread
-- **Cursor path**: when chat context gets noisy, start a new agent chat and rely on project indexing/retrieval [R1][R2][R3]
+- **Terminal agent path**: when context pressure rises, compact or reset in-thread; delegate scoped follow-ups to a background run on a branch when the main loop should stay focused
+- **IDE / cloud agent path**: when chat context gets noisy, start a new agent and rely on codebase search and indexing; use cloud agents for branch-scoped work that should not bloat the primary session [R2][R3]
 - **Both paths**: keep durable project state outside chat (`brief.md`, `decisions.md`, `open-questions.md`)
 
 Minimum handoff contract:
 
 - One shared `brief.md` with problem, scope, decisions, open questions, and success signals
 - One decision log to avoid re-litigating choices after chat resets
-- One analysis spine (for example, `PostHog + scripts` or your preferred analytics stack), and prefer tools with MCP integrations or Claude skills so decisions remain comparable across paths
+- One analysis spine (for example, `PostHog + scripts` or your preferred analytics stack), and prefer MCP-connected analytics and ops tools so decisions remain comparable across paths
 
 ## What this is
 
@@ -253,9 +260,9 @@ There is always another loop tomorrow.
 
 ## Appendix: References
 
-These links support the context-management guidance above, especially for Cursor indexing and long-range retrieval behavior.
+These links support the context-management and agent-orchestration guidance above.
 
-- [R1] Cursor blog (November 6, 2025): [Improving agent with semantic search](https://cursor.com/blog/semsearch)
-- [R2] Cursor changelog 1.2 (July 3, 2025): [Agent Planning, Better Context & Faster Tab](https://cursor.com/changelog/1-2)
-- [R3] Cursor docs: [Codebase Indexing](https://docs.cursor.com/context/codebase-indexing)
-- [R4] SSRN (November 7, 2025): [AI Agents, Productivity, and Higher-Order Thinking](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5713646)
+- [R1] Cursor blog: [Improving agents with semantic search](https://cursor.com/blog/semsearch)
+- [R2] Cursor docs: [Cloud Agents](https://cursor.com/docs/cloud-agent) (hosted agents on branches/PRs with MCP support)
+- [R3] Cursor docs: [Search](https://cursor.com/docs/context/codebase-indexing) (Instant Grep and Explore subagent for parallel codebase search)
+- [R4] SSRN: [AI Agents, Productivity, and Higher-Order Thinking](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5713646)
