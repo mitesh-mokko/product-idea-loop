@@ -25,19 +25,10 @@ const components: Components = {
       </a>
     );
   },
-  h1: ({ ...props }) => (
-    <h1
-      className="mt-8 text-[1.875rem] font-semibold leading-[1.15] tracking-[-0.025em] sm:text-[2.125rem]"
-      {...props}
-    />
-  ),
-  h2: ({ ...props }) => (
-    <h2 className="mt-10 text-xl font-medium leading-snug tracking-[-0.02em] sm:text-[1.625rem]" {...props} />
-  ),
-  h3: ({ ...props }) => (
-    <h3 className="mt-8 text-lg font-medium leading-snug tracking-[-0.015em] sm:text-xl" {...props} />
-  ),
-  p: ({ ...props }) => <p className="mt-4 leading-7 text-foreground/90 sm:leading-8" {...props} />,
+  h1: ({ ...props }) => <h1 className="markdown-h1 mt-8" {...props} />,
+  h2: ({ ...props }) => <h2 className="markdown-h2 mt-10" {...props} />,
+  h3: ({ ...props }) => <h3 className="markdown-h3 mt-8" {...props} />,
+  p: ({ ...props }) => <p className="mt-4 leading-[var(--leading-body)] text-foreground/90" {...props} />,
   ul: ({ ...props }) => <ul className="mt-4 list-disc space-y-2 pl-6" {...props} />,
   ol: ({ ...props }) => <ol className="mt-4 list-decimal space-y-2 pl-6" {...props} />,
   blockquote: ({ ...props }) => (

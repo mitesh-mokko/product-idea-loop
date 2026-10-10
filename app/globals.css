@@ -18,6 +18,22 @@
   --border: oklch(88% 0.01 255);
   --ring: oklch(54% 0.18 255);
   --radius: 0.6rem;
+
+  /* Modular scale (~1.2× steps from body); tuned between pre-PR heaviness and post-PR lightness */
+  --font-size-body: 1.125rem;
+  --leading-body: 1.72;
+  --font-size-h3: 1.25rem;
+  --leading-h3: 1.28;
+  --tracking-h3: -0.016em;
+  --font-weight-h3: 600;
+  --font-size-h2: 1.5rem;
+  --leading-h2: 1.22;
+  --tracking-h2: -0.022em;
+  --font-weight-h2: 600;
+  --font-size-h1: 1.875rem;
+  --leading-h1: 1.14;
+  --tracking-h1: -0.028em;
+  --font-weight-h1: 700;
 }
 
 .dark {
@@ -63,8 +79,8 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: 'Source Serif 4', 'Iowan Old Style', 'Palatino Linotype', Palatino, Charter, Georgia, serif;
-  font-size: 20px;
-  line-height: 1.75;
+  font-size: var(--font-size-body);
+  line-height: var(--leading-body);
 }
 
 h1,
@@ -84,8 +100,28 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 500;
   text-wrap: balance;
+}
+
+.markdown-h1 {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-h1);
+  line-height: var(--leading-h1);
+  letter-spacing: var(--tracking-h1);
+}
+
+.markdown-h2 {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-h2);
+  line-height: var(--leading-h2);
+  letter-spacing: var(--tracking-h2);
+}
+
+.markdown-h3 {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-h3);
+  line-height: var(--leading-h3);
+  letter-spacing: var(--tracking-h3);
 }
 
 .hero-callout {
@@ -95,15 +131,18 @@ h6 {
   background: color-mix(in oklab, var(--card) 85%, var(--primary) 15%);
   padding: 1rem 1.1rem;
   font-family: 'Manrope', 'Avenir Next', 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  font-weight: 500;
-  font-size: 1.05rem;
-  line-height: 1.5;
-  letter-spacing: -0.01em;
+  font-weight: 600;
+  font-size: calc(var(--font-size-body) * 1.05);
+  line-height: 1.45;
+  letter-spacing: var(--tracking-h3);
 }
 
-@media (max-width: 640px) {
-  body {
-    font-size: 18px;
-    line-height: 1.65;
+@media (min-width: 640px) {
+  :root {
+    --font-size-body: 1.25rem;
+    --leading-body: 1.75;
+    --font-size-h3: 1.3125rem;
+    --font-size-h2: 1.6875rem;
+    --font-size-h1: 2.375rem;
   }
 }
