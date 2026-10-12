@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&display=swap');
 @import 'tailwindcss';
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -67,7 +67,7 @@ body {
   line-height: 1.75;
 }
 
-/* Manrope via Google Fonts @import above — weights 400–700 only (no 800/900). */
+/* IBM Plex Sans via Google Fonts @import above — weights 400–700 only (no 800/900). */
 h1,
 h2,
 h3,
@@ -78,7 +78,7 @@ header,
 nav,
 .font-sans,
 .hero-callout {
-  font-family: 'Manrope', 'Avenir Next', 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
   font-synthesis: none;
 }
 
@@ -100,6 +100,6 @@ h6 {
   font-size: 1.25rem;
   font-weight: 600;
   line-height: 1.2;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.012em;
   color: var(--foreground);
 }

@@ -36,7 +36,7 @@ const components: Components = {
   },
   h1: ({ ...props }) => (
     <h1
-      className="mt-8 font-sans text-4xl font-semibold tracking-[-0.025em] leading-[1.1] sm:text-5xl"
+      className="mt-8 font-sans text-4xl font-semibold tracking-[-0.012em] leading-[1.1] sm:text-5xl"
       {...props}
     />
   ),
