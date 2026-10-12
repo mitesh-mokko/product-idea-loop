@@ -45,12 +45,26 @@ jobs:
           name: github-pages
           github-token: ${{ secrets.GITHUB_TOKEN }}
           run-id: ${{ inputs.source_run_id }}
-          path: ./_site
+          path: ./_downloaded
+
+      - name: Normalize artifact layout for deploy-pages
+        run: |
+          set -euo pipefail
+          if [ -f _downloaded/index.html ]; then
+            root=_downloaded
+          elif [ -f _downloaded/out/index.html ]; then
+            root=_downloaded/out
+          else
+            echo "Could not find site index.html in downloaded artifact:"
+            find _downloaded -name 'index.html' | head -20
+            exit 1
+          fi
+          echo "ARTIFACT_ROOT=$root" >> "$GITHUB_ENV"
 
       - name: Re-upload artifact for deploy-pages
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./_site
+          path: ${{ env.ARTIFACT_ROOT }}
 
       - name: Deploy to GitHub Pages
         id: deployment
