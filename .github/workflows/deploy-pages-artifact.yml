@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       source_run_id:
-        description: Workflow run id that uploaded the github-pages artifact
+        description: Workflow run id that uploaded the combined-pages-site artifact
         required: true
       pr_number:
         description: Pull request number (for PR comment)
@@ -39,32 +39,24 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Download Pages artifact from preview build run
+      - name: Download combined site from preview build run
         uses: actions/download-artifact@v4
         with:
-          name: github-pages
+          name: combined-pages-site
           github-token: ${{ secrets.GITHUB_TOKEN }}
           run-id: ${{ inputs.source_run_id }}
-          path: ./_downloaded
+          path: ./_site
 
-      - name: Normalize artifact layout for deploy-pages
+      - name: Verify site artifact layout
         run: |
           set -euo pipefail
-          if [ -f _downloaded/index.html ]; then
-            root=_downloaded
-          elif [ -f _downloaded/out/index.html ]; then
-            root=_downloaded/out
-          else
-            echo "Could not find site index.html in downloaded artifact:"
-            find _downloaded -name 'index.html' | head -20
-            exit 1
-          fi
-          echo "ARTIFACT_ROOT=$root" >> "$GITHUB_ENV"
+          test -f _site/index.html
+          test -f _site/.nojekyll
 
-      - name: Re-upload artifact for deploy-pages
+      - name: Upload artifact for deploy-pages
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ${{ env.ARTIFACT_ROOT }}
+          path: ./_site
 
       - name: Deploy to GitHub Pages
         id: deployment
