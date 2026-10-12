@@ -51,7 +51,7 @@ jobs:
         run: |
           set -euo pipefail
           test -f _site/index.html
-          test -f _site/.nojekyll
+          touch _site/.nojekyll
 
       - name: Upload artifact for deploy-pages
         uses: actions/upload-pages-artifact@v3
