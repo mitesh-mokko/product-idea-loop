@@ -36,6 +36,26 @@ jobs:
       - name: Build static export
         run: npm run build
 
+      - name: Preserve existing PR previews from live site
+        env:
+          PAGES_SITE_URL: https://mitesh-mokko.github.io/product-idea-loop
+        run: |
+          set -euo pipefail
+          mkdir -p out/pr-preview
+          if wget -q --spider "${PAGES_SITE_URL}/pr-preview/"; then
+            wget -e robots=off -r -np -nH --cut-dirs=2 \
+              -P /tmp/existing-previews \
+              "${PAGES_SITE_URL}/pr-preview/" || true
+            if [ -d /tmp/existing-previews ]; then
+              shopt -s nullglob
+              for dir in /tmp/existing-previews/pr-*; do
+                [ -d "$dir" ] || continue
+                name="$(basename "$dir")"
+                cp -a "$dir" "out/pr-preview/${name}"
+              done
+            fi
+          fi
+
       - name: Disable Jekyll processing
         run: touch out/.nojekyll
 
