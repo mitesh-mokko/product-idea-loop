@@ -1,0 +1,120 @@
+name: Deploy Pages artifact (dispatch from main)
+
+# Runs on main so github-pages environment branch policy allows deploy.
+# Triggered by preview-pages.yml after it uploads the combined site artifact.
+on:
+  workflow_dispatch:
+    inputs:
+      source_run_id:
+        description: Workflow run id that uploaded the github-pages artifact
+        required: true
+      pr_number:
+        description: Pull request number (for PR comment)
+        required: false
+      pr_head_sha:
+        description: Short PR head SHA (for PR comment)
+        required: false
+      preview_action:
+        description: pull_request action (opened, synchronize, reopened, closed)
+        required: true
+
+permissions:
+  actions: read
+  contents: read
+  pages: write
+  id-token: write
+  pull-requests: write
+
+concurrency:
+  group: pages-production
+  cancel-in-progress: false
+
+env:
+  PAGES_SITE_URL: https://mitesh-mokko.github.io/product-idea-loop
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Download Pages artifact from preview build run
+        uses: actions/download-artifact@v4
+        with:
+          name: github-pages
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: ${{ inputs.source_run_id }}
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Comment preview URL on PR
+        if: inputs.preview_action != 'closed' && inputs.pr_number != ''
+        uses: actions/github-script@v7
+        env:
+          PAGES_SITE_URL: ${{ env.PAGES_SITE_URL }}
+          PR_NUMBER: ${{ inputs.pr_number }}
+          PR_HEAD_SHA: ${{ inputs.pr_head_sha }}
+        with:
+          script: |
+            const prNumber = Number(process.env.PR_NUMBER);
+            const previewUrl = `${process.env.PAGES_SITE_URL}/pr-preview/pr-${prNumber}/`;
+            const marker = '<!-- pr-preview-pages -->';
+            const sha = process.env.PR_HEAD_SHA || 'unknown';
+            const body = `${marker}
+            ### GitHub Pages preview
+
+            **Preview:** ${previewUrl}
+
+            Deployed from commit \`${sha}\`. Production at ${process.env.PAGES_SITE_URL}/ is unchanged until merge.
+            `;
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: prNumber,
+            });
+            const existing = comments.find((c) => c.body?.includes(marker));
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: prNumber,
+                body,
+              });
+            }
+
+      - name: Update preview comment on close
+        if: inputs.preview_action == 'closed' && inputs.pr_number != ''
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prNumber = Number('${{ inputs.pr_number }}');
+            const marker = '<!-- pr-preview-pages -->';
+            const body = `${marker}
+            ### GitHub Pages preview
+
+            Preview for this pull request was removed after close.
+            `;
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: prNumber,
+            });
+            const existing = comments.find((c) => c.body?.includes(marker));
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body,
+              });
+            }

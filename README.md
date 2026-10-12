@@ -11,7 +11,7 @@ Website: <https://mitesh-mokko.github.io/product-idea-loop/>
 
 - Framework: [Next.js](https://nextjs.org/) static export (`output: 'export'`)
 - UI: [React](https://react.dev/), [Tailwind CSS v4](https://tailwindcss.com/), shadcn-style theming tokens
-- Deploy: GitHub Pages via GitHub Actions (`.github/workflows/deploy-pages.yml`). **One-time:** in repo **Settings → Pages → Build and deployment**, set **Source** to **GitHub Actions** (not “Deploy from a branch”). Legacy Jekyll builds from `main` must not run alongside Actions or they will overwrite the Next.js site.
+- Deploy: GitHub Pages via GitHub Actions (`.github/workflows/deploy-pages.yml`). **One-time:** in repo **Settings → Pages → Build and deployment**, set **Source** to **GitHub Actions** (not “Deploy from a branch”). Legacy Jekyll builds from `main` must not run alongside Actions or they will overwrite the Next.js site. PR previews (`.github/workflows/preview-pages.yml`) deploy via `deploy-pages-artifact.yml` dispatched on `main` so the `github-pages` environment branch policy allows the deployment.
 - Content source: markdown files in repo root (`index.md`, `manifesto.md`, `CONTRIBUTING.md`, `artifacts/README.md`)
 
 ### Local development
