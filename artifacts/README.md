@@ -54,3 +54,4 @@ Example:
 - Demo: <url>
 ```
 # Preview deploy smoke test (no-op doc)
+Preview path: /pr-preview/pr-<number>/
