@@ -45,6 +45,12 @@ jobs:
           name: github-pages
           github-token: ${{ secrets.GITHUB_TOKEN }}
           run-id: ${{ inputs.source_run_id }}
+          path: ./_site
+
+      - name: Re-upload artifact for deploy-pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./_site
 
       - name: Deploy to GitHub Pages
         id: deployment
