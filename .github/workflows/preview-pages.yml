@@ -11,8 +11,8 @@ permissions:
   pull-requests: write
 
 concurrency:
-  group: pages
-  cancel-in-progress: false
+  group: pages-preview-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
 
 env:
   PAGES_SITE_URL: https://mitesh-mokko.github.io/product-idea-loop
