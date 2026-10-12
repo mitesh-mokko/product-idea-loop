@@ -1,9 +1,3 @@
----
-layout: default
-title: Manifesto
-permalink: /manifesto/
----
-
 # Product IDEA Loop Manifesto
 
 ### A new way to build and ship software in the AI era.

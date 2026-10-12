@@ -1,9 +1,3 @@
----
-layout: default
-title: Contributing
-permalink: /contributing/
----
-
 # Contributing to Product IDEA Loop
 
 This repository is for improving the IDEA Loop framework itself.

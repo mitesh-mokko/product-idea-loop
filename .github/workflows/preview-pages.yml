@@ -1,0 +1,178 @@
+name: Deploy PR preview to Pages
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  pull-requests: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+env:
+  PAGES_SITE_URL: https://mitesh-mokko.github.io/product-idea-loop
+  PRODUCTION_BASE_PATH: /product-idea-loop
+
+jobs:
+  build:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout default branch (production source)
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.ref }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build production static export
+        run: npm run build
+
+      - name: Mirror existing PR previews from live site
+        run: |
+          set -euo pipefail
+          mkdir -p out/pr-preview
+          if wget -q --spider "${PAGES_SITE_URL}/pr-preview/"; then
+            wget -e robots=off -r -np -nH --cut-dirs=2 \
+              -P /tmp/existing-previews \
+              "${PAGES_SITE_URL}/pr-preview/" || true
+            if [ -d /tmp/existing-previews ]; then
+              shopt -s nullglob
+              for dir in /tmp/existing-previews/pr-*; do
+                [ -d "$dir" ] || continue
+                name="$(basename "$dir")"
+                rm -rf "out/pr-preview/${name}"
+                cp -a "$dir" "out/pr-preview/${name}"
+              done
+            fi
+          fi
+
+      - name: Remove closed PR preview folder
+        if: github.event.action == 'closed'
+        run: rm -rf "out/pr-preview/pr-${{ github.event.pull_request.number }}"
+
+      - name: Build and attach PR preview
+        if: github.event.action != 'closed'
+        env:
+          PREVIEW_BASE_PATH: ${{ env.PRODUCTION_BASE_PATH }}/pr-preview/pr-${{ github.event.pull_request.number }}
+        run: |
+          set -euo pipefail
+          cp -a out /tmp/production-out
+          git fetch origin "${{ github.event.pull_request.head.ref }}"
+          git checkout FETCH_HEAD
+          NEXT_PUBLIC_BASE_PATH="${PREVIEW_BASE_PATH}" npm run build
+          rm -rf "/tmp/production-out/pr-preview/pr-${{ github.event.pull_request.number }}"
+          mkdir -p "/tmp/production-out/pr-preview/pr-${{ github.event.pull_request.number }}"
+          shopt -s dotglob
+          for entry in out/*; do
+            base="$(basename "$entry")"
+            cp -a "$entry" "/tmp/production-out/pr-preview/pr-${{ github.event.pull_request.number }}/${base}"
+          done
+          rm -rf out
+          mv /tmp/production-out out
+
+      - name: Disable Jekyll processing
+        run: touch out/.nojekyll
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./out
+
+  deploy:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  comment:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comment preview URL on PR
+        if: github.event.action != 'closed'
+        uses: actions/github-script@v7
+        env:
+          PAGES_SITE_URL: ${{ env.PAGES_SITE_URL }}
+        with:
+          script: |
+            const prNumber = context.payload.pull_request.number;
+            const previewUrl = `${process.env.PAGES_SITE_URL}/pr-preview/pr-${prNumber}/`;
+            const marker = '<!-- pr-preview-pages -->';
+            const body = `${marker}
+            ### GitHub Pages preview
+
+            **Preview:** ${previewUrl}
+
+            Deployed from commit \`${context.payload.pull_request.head.sha.substring(0, 7)}\`. Production at ${process.env.PAGES_SITE_URL}/ is unchanged until merge.
+            `;
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: prNumber,
+            });
+            const existing = comments.find((c) => c.body?.includes(marker));
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: prNumber,
+                body,
+              });
+            }
+
+      - name: Update preview comment on close
+        if: github.event.action == 'closed'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prNumber = context.payload.pull_request.number;
+            const marker = '<!-- pr-preview-pages -->';
+            const body = `${marker}
+            ### GitHub Pages preview
+
+            Preview for this pull request was removed after close.
+            `;
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: prNumber,
+            });
+            const existing = comments.find((c) => c.body?.includes(marker));
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body,
+              });
+            }

@@ -1,0 +1,9 @@
+# Production site: GitHub Actions workflow `.github/workflows/deploy-pages.yml`
+# (Next.js static export). Do not rely on legacy Jekyll builds from this branch.
+#
+# Required repo setting (one-time): Settings → Pages → Build and deployment →
+# Source: GitHub Actions (not "Deploy from a branch").
+#
+# This config intentionally fails legacy Jekyll Pages builds so they cannot
+# overwrite the Actions-deployed site when both run on push to main.
+theme: jekyll-theme-not-used-for-production-site

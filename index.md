@@ -1,9 +1,3 @@
----
-layout: default
-title: Product IDEA Loop
-nav_exclude: true
----
-
 # Product IDEA Loop
 
 **A living system for building, learning, and shipping faster in the AI era.**
